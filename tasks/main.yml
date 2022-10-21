@@ -1,0 +1,19 @@
+---
+
+- name: Fail if required vars-preserver settings not defined
+  fail:
+    msg: >-
+      You need to define a required configuration setting (`{{ item }}`) for using this role.
+  when: "vars[item] == ''"
+  with_items:
+    - devture_vars_preserver_dst
+    - devture_vars_preserver_uid
+    - devture_vars_preserver_gid
+
+- name: Preserve vars.yml on the server for easily restoring if it gets lost later on
+  ansible.builtin.copy:
+    src: "{{ devture_vars_preserver_src }}"
+    dest: "{{ devture_vars_preserver_dst }}"
+    owner: "{{ devture_vars_preserver_uid }}"
+    group: "{{ devture_vars_preserver_gid }}"
+    mode: "{{ devture_vars_preserver_mode }}"

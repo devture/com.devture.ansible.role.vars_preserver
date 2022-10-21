@@ -1,0 +1,9 @@
+---
+
+devture_vars_preserver_src: "{{ inventory_dir }}/host_vars/{{ inventory_hostname }}/vars.yml"
+devture_vars_preserver_dst: ~
+
+devture_vars_preserver_uid: ~
+devture_vars_preserver_gid: ~
+devture_vars_preserver_mode: '0660'
+
