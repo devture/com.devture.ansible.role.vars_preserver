@@ -9,8 +9,11 @@ Example playbook:
 ```yaml
 - hosts: servers
   roles:
-    - when: my_playbook_vars_preservation_enabled | bool
+    - when: devture_vars_preserver_enabled | bool
       role: galaxy/com.devture.ansible.role.vars_preserver
+      # Uncomment to make it run on some tags only, not always
+      # tags:
+      #  - setup-all
 ```
 
 Example configuration (see `defaults/main.yml` for more):
